@@ -44,7 +44,7 @@ jobs:
           script: |
             cd /tmp/fullstack-node-app
             tar -xvf fullstack-node-app.tar.gz
-            pm2 start npm -- run start
+            cd /tmp/fullstack-node-app && pm2 start npm -- run start
       #- name: executing remote ssh commands using password
        # run: scp -i ${{secrets.PRIVATE_KEY}} fullstack-node-app.tar.gz ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/tmp/
         
