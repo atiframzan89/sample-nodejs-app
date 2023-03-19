@@ -26,13 +26,8 @@ jobs:
       - name: creating artifact
         run: tar -cvf fullstack-node-app.tar.gz ./*
       - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@v0.1.8
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.PRIVATE_KEY }}
-          port: 22
-          script: |
-            scp -i ${{secrets.PRIVATE_KEY}} fullstack-node-app.tar.gz ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/tmp/
+        run: scp -i ${{secrets.PRIVATE_KEY}} fullstack-node-app.tar.gz ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/tmp/
+        
+            
         
       
