@@ -42,7 +42,7 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           port: 22
           script: |
-            cp /tmp/fullstack-node-app.tar.gz /home/ubuntu/fullstack-node-app/
+            cp -rf /tmp/fullstack-node-app.tar.gz /home/ubuntu/fullstack-node-app/
             cd /home/ubuntu/fullstack-node-app
             tar -xvf fullstack-node-app.ar.gz
             pm2 start npm -- run start
