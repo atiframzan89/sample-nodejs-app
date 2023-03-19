@@ -33,7 +33,18 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           port: 22
           source: "fullstack-node-app.tar.gz"
-          target: "/tmp"
+          target: "/home/ubuntu/fullstack-node-app"
+      - name: Extracting the artifact
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: 22
+          script: |
+            cd /home/ubuntu/fullstack-node-app
+            tar -xvf fullstack-node-app.ar.gz
+            pm2 start npm -- run start
       #- name: executing remote ssh commands using password
        # run: scp -i ${{secrets.PRIVATE_KEY}} fullstack-node-app.tar.gz ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/tmp/
         
