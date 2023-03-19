@@ -33,6 +33,6 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           port: 22
           script: |
-            scp -i ${{secrets.PRIVATE_KEY}} fullstack-node-app.tar.gz '${{ secrets.USERNAME }}'@'${{ secrets.HOST }}':/tmp/
+            scp -i ${{secrets.PRIVATE_KEY}} fullstack-node-app.tar.gz ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/tmp/
         
       
