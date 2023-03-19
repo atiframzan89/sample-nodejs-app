@@ -25,8 +25,18 @@ jobs:
         run: npm run build
       - name: creating artifact
         run: tar -cvf fullstack-node-app.tar.gz ./*
-      - name: executing remote ssh commands using password
-        run: scp -i ${{secrets.PRIVATE_KEY}} fullstack-node-app.tar.gz ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/tmp/
+      - uses: actions/checkout@master
+      - name: copy file via ssh password
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: 22
+          source: "fullstack-node-app.tar.gz"
+          target: "/tmp"
+      #- name: executing remote ssh commands using password
+       # run: scp -i ${{secrets.PRIVATE_KEY}} fullstack-node-app.tar.gz ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/tmp/
         
             
         
