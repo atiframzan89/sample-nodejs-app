@@ -25,7 +25,6 @@ jobs:
         run: npm run build
       - name: creating artifact
         run: tar -cvf fullstack-node-app.tar.gz ./*
-      - uses: actions/checkout@master
       - name: copy file via ssh password
         uses: appleboy/scp-action@master
         with:
